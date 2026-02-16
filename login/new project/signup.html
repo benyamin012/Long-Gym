@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+
+<link rel="stylesheet" href="css/singup.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>sing up</title>
+</head>
+
+<body style="direction: rtl;">
+    <h1 class="lable"> ساخت اکانت </h1>
+
+
+    <form id="form" action="therdpage.html" class="LK" method="get">
+        <div>
+        <input id="usern" class="usename" type="text" placeholder="نام">
+        <span id="ermsg" class="errormsg">لطفا قسمت نام را خالی نزارید</span>
+        </div>
+        <div>
+        <input id="userpass" class="userpas" type="password" placeholder="رمز ">
+        <span id="ermsg1" class="errormsg1">لطفا قسمت پسورد را خالی نگزارید</span>
+        </div>
+        <div>
+        <input class="useconf" type="text" placeholder="تکرار رمز">
+         <span id="ermsg2" class="errormsg2">رمز وارد شده با رمز اول همخوانی ندارد</span>
+        </div>
+        <a id="butnhref"  href=""><button   class="btn" id="btn"   type="submit">ثبت اکانت</button></a>
+
+
+
+        
+
+        <h4 class="textknow">داشتن اکانت یا <a href="login.html">ورود</a>
+        </h4>
+
+        <p class="dashes">______________________</p>
+        <h5 class="text">Or</h5>
+        <p class="dashes1">______________________</p>
+        <a href="">
+            <h3 class="last_taskbar">Login with Facebook</h3>
+        </a>
+        <a href="">
+            <h3 class="last_taskbar1">Login with Google </h3>
+        </a>
+        <img class="img" src="img/Facebook_Logo_Primary.png">
+        <img class="img1" src="img/New-Google-Logo.png">
+        <div class="facebook"></div>
+        <div class="Google"></div>
+
+   </form>
+
+    <button class="btn1" id="btn1" onclick="deletlocal()"  type="submit">delet local </button>
+
+    <script>
+      let $ = document;
+      let  name,password;
+        name =$.getElementById('usern')
+        password = $.getElementById('userpass')
+        let form =$.getElementById('form')
+        let span =$.getElementById('ermsg')
+        let span1 =$.getElementById('ermsg1')
+        let span2 =$.getElementById('ermsg2') 
+        
+       
+
+
+      
+       form.addEventListener("submit", function signupsucss(event){
+        event.preventDefault();
+   
+     
+       Name= name.value,
+        Password = password.value
+       
+       if(Name === "" || Password === ""){
+        alert("You must fill in the given values ")
+       
+       
+        
+       }
+       else{
+
+       let userName1 = document.getElementById('usern').value
+       let password2 = document.getElementById('userpass').value
+       let alluserinlocal = JSON.parse(localStorage.getItem(userName1))
+       console.log(alluserinlocal);
+       if(alluserinlocal && alluserinlocal.Name === Name){
+        alert('Someone else with this name has already logged in')
+       }else{
+        reset()
+        alert("signup succss")
+         window.location.href='login.html'
+       }
+       let  user = {Name,Password};
+       localStorage.setItem(Name,JSON.stringify(user))
+        
+        let usersinformation =new Array();
+        usersinformation=JSON.parse(localStorage.getItem(Name))?JSON.parse(localStorage.getItem(Name)):[]
+        
+         
+          // usersinformation.push({
+          //   "name ": name,
+          //   "password ":password
+          // })
+        
+         
+          
+          
+        
+       }
+
+
+
+
+
+
+       
+       
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       function reset(){
+        document.getElementById('usern').value=""
+        document.getElementById('userpass').value=""
+       }
+
+
+
+
+
+
+       
+
+     
+       
+
+        
+      
+
+
+        
+       })
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function deletlocal(){
+            localStorage.clear();
+        }
+
+
+       () =>{
+        storage=JSON.parse(localStorage.getItem(""))
+        console.log(storage);
+        localStorage.setItem('singup_username' ,JSON.stringify(usninf,usninf))
+  
+      ()}
+
+      
+
+
+    </script>
+
+
+</body>
+
+</html>
+<!-- c:\Users\Supp-Boghrat\Desktop\new project\log.html -->
+
+<!-- function sendion(){
+    let storage = []
+   let usninf = usname.value;
+   let passinf = uspass.value;
+
+//    form.addEventListener('submit',function(event){
+//     event.preventDefault()
+//    })
+
+
+
+
+   let infoname ={
+    username : usninf,
+    userpassword:passinf
+
+   }
+   form.addEventListener('submit',function(event){
+    event.preventDefault()
+  })
+   if (usninf == ''|| passinf =="") {
+    span.style.display="block";
+    span1.style.display="block";
+    
+
+  }
+  else{
+    $.getElementById('butnhref').href='login.html';
+    
+
+    let infoname ={
+    username : usninf,
+    userpassword:passinf
+
+   }
+
+
+   storage.push(infoname);
+
+
+   localStorage.setItem('singup',JSON.stringify( storage));
+
+  } 
+
+
+} -->
+
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+

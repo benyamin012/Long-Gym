@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>dashboard</title>
+</head>
+<body>
+    <header>
+        <div class="basic-head-menu">
+            <a href="#"><img src="img/dashboared.png" alt="img"></a>
+            <h3 id="profile">User Name</h3>
+           
+        </div>
+        <div class="head-menu">
+           <ul>
+            <li><a>home</a></li>
+            <li><a>abut us</a></li>
+            <li><a>call</a></li>
+            <li><a>prodauct</a></li>
+           </ul>
+        </div>
+        <div class="body-menu">
+            <header>
+            <h2 dir="rtl">اکانت اعضای ویژه سایت</h2>
+            </header>
+            <h3 dir="rtl">درحال حاضر شما عضو ویژه سایت نمی باشید ! درصورت تمایل برای استفاده از امکانات اعضای ویژه باید اشتراک خریداری نمایید</h3>
+        </div>
+        <div class="butten"><a href="#"> همین الانـ عضو ویژه شو </a> </div>
+        <div class="body-menu">
+            <header>
+                <h2 dir="rtl">اطلاعات کاربری</h2>
+            </header>
+
+            <h6 id="show_username" dir="rtl">نام یا نام کاربری :  </h6>
+            <h6 id="show_userpass" dir="rtl"> رمز ورود : </h6>
+            </div>
+            <div class="right-menu">
+              <ul dir="rtl">
+              <li><a id="openmodal" href="#" >ویرایش اطلاعات </a></li>
+              <li><a id="logout" onclick="logoutus()" href="#">خروج</a></li>
+            </ul>
+            </div>
+        </div>
+
+
+        <div dir="rtl" id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>ویرایش اطلاعات</h2>
+              </div>
+              <div class="modal-body">
+                <input id="usname" class="usename" type="text" placeholder="نام">
+                <input id="uspass" class="userpas" type="password" placeholder="رمز ">
+              </div>
+              <div class="modal-footer">
+                <a id="butnhref"  href="#"><button   class="btn" id="btn"   type="submit">ورود</button></a>
+                <h3>(:</h3>
+              </div>
+            </div>
+            </div>
+    </header>
+
+    <script>
+        
+        // let allusersinlocal = localStorage.getItem()
+        
+        // console.log(allusersinlocal);
+
+
+        // const userName1 = document.getElementById('usname').value;
+        // const password2 = document.getElementById('uspass').value;
+        const logInUserId = JSON.parse(localStorage.getItem("loginUser"));
+        const curentUser = JSON.parse(localStorage.getItem(logInUserId));
+        let loginUserpass = JSON.parse(localStorage.getItem("loginUserpass"));
+        let curentUserpass =JSON.parse(localStorage.getItem(loginUserpass))
+        let user_pass =loginUserpass;
+        let user_name = logInUserId;
+        console.log(user_name);
+        let profileinformation = document.getElementById('profile').innerHTML=user_name
+        let showusername = document.getElementById('show_username').innerHTML=` نام یا نام کاربری :   ${user_name}`
+        let showuserpass = document.getElementById('show_userpass').innerHTML=`  رمز  :   ${user_pass}`
+
+        // ...................................................................................................................
+
+       
+       function reset(){
+             let showusername = document.getElementById('show_username').innerHTML=` نام یا نام کاربری : `
+             let showuserpass = document.getElementById('show_userpass').innerHTML=`  رمز  : `
+        }
+
+
+        let logoutuser = document.getElementById('logout')
+        function logoutus(){
+            localStorage.removeItem('loginUser')
+            localStorage.removeItem('loginUserpass')
+            window.location.href='login.html'
+            reset()
+        }
+
+        // ....................................................................................................................
+
+        let openmodal = document.getElementById('openmodal')
+
+        openmodal.onclick = function(){
+           let modal = document.getElementById('myModal')
+            
+           modal.style.display = "block";
+            
+        }
+        let closemodal =document.querySelector('.close')
+        closemodal.onclick = () =>{
+          let modal =document.getElementById('myModal')
+          modal.style.display="none";
+        
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        let changeusname = document.getElementById('usname')
+        let changeuspas = document.getElementById('uspass')
+        let changbtn = document.getElementById('btn')
+        
+        btn.onclick = ()=>{
+         let changeusnamevalue = changeusname.value;
+         let changeuspasvalue= changeuspas.value;
+
+        let profileinformation = document.getElementById('profile').innerHTML=`نام کاربری :  ${changeusnamevalue}`
+        let showusername = document.getElementById('show_username').innerHTML=` نام یا نام کاربری :   ${changeusnamevalue}`
+        let showuserpass = document.getElementById('show_userpass').innerHTML=`  رمز  :   ${changeuspasvalue}`
+
+        
+
+
+         console.log(changeusnamevalue,changeuspasvalue);
+         if (changeusnamevalue === "" , changeuspasvalue === ""){
+          alert("if you want to change user name and password you shuld fill the inputs")
+         }else{
+          alert("change information sucss")
+        //  window.location.href='login.html'
+         let modal =document.getElementById('myModal')
+           modal.style.display="none"
+       }
+      
+         }
+         
+         
+        
+        
+
+    </script>
+
+</body>
+</html>

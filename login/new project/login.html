@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+
+<link rel="stylesheet" href="css/singup.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>login page</title>
+</head>
+
+<body style="direction: rtl;">
+    <h1 class="lable"> ورود </h1>
+
+    <form id="form" action="" class="LK" method="get">
+        <div>
+        <input id="usname" class="usename" type="text" placeholder="نام">
+        <span id="ermsg" class="errormsg">لطفا قسمت نام را خالی نزارید</span>
+        </div>
+        <div>
+        <input id="uspass" class="userpas" type="password" placeholder="رمز ">
+        <span id="ermsg1" class="errormsg1">لطفا قسمت پسورد را خالی نگزارید</span>
+        </div>
+        </div>
+        <a id="butnhref"  href="#"><button   class="btn" id="btn"   type="submit">ورود</button></a>
+
+
+
+        
+
+        <h4 class="textknow">داشتن اکانت یا <a href="signup.html">ثبت نام</a>
+        </h4>
+
+        <p class="dashes">______________________</p>
+        <h5 class="text">Or</h5>
+        <p class="dashes1">______________________</p>
+        <a href="">
+            <h3 class="last_taskbar">Login with Facebook</h3>
+        </a>
+        <a href="">
+            <h3 class="last_taskbar1">Login with Google </h3>
+        </a>
+        <img class="img" src="img/Facebook_Logo_Primary.png">
+        <img class="img1" src="img/New-Google-Logo.png">
+        <div class="facebook"></div>
+        <div class="Google"></div>
+
+   </form>
+
+
+
+
+
+
+
+
+    <script>
+
+   
+
+
+    let a = document.getElementById('form');
+a.addEventListener("submit", function(event) {
+    event.preventDefault(); 
+
+    let users = name,password;
+        name =document.getElementById('usname').value
+        password = document.getElementById('uspass').value
+
+
+    let allUsers = new Array()
+    allUsers =JSON.parse(localStorage.getItem(name))?JSON.parse(localStorage.getItem(name)):[]
+    console.log(allUsers);
+
+ 
+        const userName1 = document.getElementById('usname').value;
+        const password2 = document.getElementById('uspass').value;
+        const curentUser = JSON.parse(localStorage.getItem(userName1));
+        console.log(curentUser);
+        
+        if(curentUser && curentUser.Password === password)
+    {
+        alert("login")
+        console.log("LogIn");
+        window.location.href= ' index.html'
+        // var logindUser = curentUser.userName1;
+        localStorage.setItem("loginUser",JSON.stringify(userName1))
+        localStorage.setItem("loginUserpass",JSON.stringify(password2))
+
+        if("loginUser")
+    {
+        console.log("1");
+        window.location.href='../../index.html'
+    }
+        
+    }
+    else{
+        alert("you need a signup")
+         window.location.href='signup.html'
+    }
+   
+
+})
+    </script>
+
+</body>
+
+</html>
+<!-- c:\Users\Supp-Boghrat\Desktop\new project\log.html -->
